@@ -1,0 +1,164 @@
+#formSection {
+    height: 100vh;
+    width: 100%;
+    display: flex;
+    position: relative;
+    justify-content: center;
+    align-items: center;
+}
+
+#formSection .form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 20px;
+    width: 550px;
+    font-size: 20px;
+}
+
+#formSection .form span {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 550px;
+    gap: 20px;
+}
+
+.form input {
+    height: 45px;
+    width: 250px;
+    font-size: 20px;
+    border: none #caf0f8;
+    border-radius: 10px;
+    padding: 0 20px;
+    background: #FFF;
+    border: #167EA5 2px solid;
+}
+
+.form textarea {
+    align-self: center;
+    width: 550px;
+    font-size: 20px;
+    border-radius: 10px;
+    padding: 10px 10px;
+    border-radius: 10px;
+    border: 2px solid #167EA5;
+}
+
+.form textarea:focus, .form input:focus{
+    border: 2px solid #0e455a;
+}
+
+::placeholder {
+    font-size: 20px;   
+}
+
+#formSection button {
+    align-self: center;
+    height: 60px;
+    width: 180px;
+    margin-top: 30px;
+    border-radius: 10px;
+    font-size: 25px;
+    background-color: white;
+    color: #167EA5;
+    border: solid 2px #167EA5;
+}
+
+#formSection button:hover{
+    background-color: #167EA5;
+    color: #FFF;
+}
+
+.happydoggo{
+    position: relative;
+    width: auto;
+    height: 200px;
+    margin-bottom: 46px;
+}
+
+.fieldset legend{
+    margin: 0;
+}
+
+.fieldset {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 800px;
+    height: 850px;
+    box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
+    backdrop-filter: blur( 3px );
+    -webkit-backdrop-filter: blur( 3px );
+    border-radius: 10px;
+    margin-left: 40px;
+    color: #3B3204;
+}
+
+h2{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 550px;
+    margin-bottom: 80px;
+    color: #167EA5;
+    font-weight: bold;
+    text-align: center;
+}
+
+.fieldSetChosenDog{
+    top: 50px;
+    width: 800px;
+    height: 750px;
+    position: relative;
+    margin: 20px;
+    background-color: #FFF;
+    box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
+    backdrop-filter: blur( 3px );
+    -webkit-backdrop-filter: blur( 3px );
+    border-radius: 10px;
+    color: #3B3204;
+}
+
+.fieldSetChosenDog img{
+    width: 300px;
+    height: 300px;
+    object-fit: cover;
+    border-radius: 10%;
+    transform: translateX(calc(100% - 50px));
+    padding: 15px;
+}
+
+.fieldSetChosenDog p{
+    font-size: 25px;
+    word-wrap: break-word;
+    padding: 15px;
+}
+
+.dogNameLegend{
+    font-size: 30px;
+    border-radius: 20px;
+    background: #FFF;
+    width: auto;
+    padding: 10px;
+    border: #167EA5 4px solid;
+    margin-left: 20px;
+    color: #3B3204;
+    margin-right: 40px;
+    color: #167EA5;
+    letter-spacing: 0.1em;
+    font-weight: bold;
+}
+
+.fieldSetChosenDog h5 {
+    font-size: 25px;
+    font-weight: bold;
+    min-width: 200px;
+    color: #167EA5;
+}
+
+.chosenDogInfos {
+    display: flex;
+    align-items: baseline;
+    padding-left: 60px;
+}
