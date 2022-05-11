@@ -1,5 +1,5 @@
-import React from 'react'
-import './ActionButton.css'
+import React from 'react';
+import './ActionButton.css';
 
 function ActionButton({ color, text }) {
   return (
@@ -7,4 +7,4 @@ function ActionButton({ color, text }) {
   )
 }
 
-export default ActionButton
+export default ActionButton;

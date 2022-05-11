@@ -1,8 +1,8 @@
-import React from 'react'
-import './AddNewCard.css'
+import React from 'react';
+import './AddNewCard.css';
 import {FaUserPlus} from 'react-icons/fa';
 
-function AddNewCard({setaddNewDog}) {
+function AddNewCard({ setaddNewDog }) {
     function handleClick() {
         setaddNewDog(true);
     }
@@ -14,4 +14,4 @@ function AddNewCard({setaddNewDog}) {
     )
 }
 
-export default AddNewCard
+export default AddNewCard;

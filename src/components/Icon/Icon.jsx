@@ -1,5 +1,5 @@
-import React from 'react'
-import './Icon.css'
+import React from 'react';
+import './Icon.css';
 
 function Icon( { imgSrc, text }) {
   return (
@@ -10,4 +10,4 @@ function Icon( { imgSrc, text }) {
   )
 }
 
-export default Icon
+export default Icon;

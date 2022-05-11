@@ -1,23 +1,19 @@
 .deleteDogPopup {
     position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     gap: 50px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
     height: 200px;
     width: 450px;
-    background: rgba( 255, 255, 255, 0.9);
-    box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
-    backdrop-filter: blur( 12px );
-    -webkit-backdrop-filter: blur( 12px );
+    background: #fffffff2;
+    box-shadow: 0 8px 32px 0 #1f26875e;
     border-radius: 10px;
-    border: 1px solid rgba( 255, 255, 255, 0.18);
-    color: #3b3204;
-    z-index: 1;
+    z-index: 2;
 }
 
 .deleteDogPopup div {
@@ -25,17 +21,6 @@
     justify-content: center;
     align-items: center;
     gap: 10px;
-}
-
-.deleteDogPopup div input{
-    background-color: #fff;
-    font-size: 15px;
-    color: #3b3204;
-}
-
-.deleteDogPopup div h3 {
-    width: 100px;
-    font-weight: 600;
 }
 
 .deleteDogPopup div button {
@@ -46,14 +31,14 @@
 }
 
 .deleteDogPopup div .confirmDelete {
-    background-color: rgb(148, 51, 51);
+    background-color: #720d0d;
     color: #fff;
 }
 
 .deleteDogPopup div .confirmDelete:hover {
     background-color: #fff;
-    color: rgb(148, 51, 51);
-    border: 1px solid rgb(148, 51, 51);
+    color: #720d0d;
+    border: 1px solid #720d0d;
 }
 
 .deleteDogPopup div .cancelDelete {

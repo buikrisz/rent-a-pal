@@ -3,27 +3,34 @@ import './AdminAddDog.css';
 import { FaCheckCircle } from 'react-icons/fa';
 
 function AdminAddDog({ setaddNewDog, setDogs }) {
-    const [nameInput, setNameInput] = useState("");
-    const [breedInput, setBreedInput] = useState("");
-    const [genderInput, setGenderInput] = useState("");
-    const [trainingInput, setTrainingInput] = useState("");
-    const [introductionInput, setIntroductionInput] = useState("");
+    const [formData, setFormData] = useState(
+        { name: "", breed: "", gender: "", training: "", introduction: "" }
+    );
 
     const [selectedFile, setSelectedFile] = useState();
 	const [isFilePicked, setIsFilePicked] = useState(false);
 
     const [submit, setSubmit] = useState(false);
 
+    function handleChange(e) {
+        setFormData({ ...formData, [e.target.name]: e.target.value });
+    }
+
+    function handleSubmit(e) {
+        e.preventDefault();
+        setSubmit(true);
+    }
+
     useEffect(
         () => {
             if (submit && isFilePicked) {
 
                 const newDogDetails = new FormData();
-                newDogDetails.append("name", nameInput);
-                newDogDetails.append("breed", breedInput);
-                newDogDetails.append("gender", genderInput);
-                newDogDetails.append("training", trainingInput);
-                newDogDetails.append("introduction", introductionInput);
+                newDogDetails.append("name", formData.name);
+                newDogDetails.append("breed", formData.breed);
+                newDogDetails.append("gender", formData.gender);
+                newDogDetails.append("training", formData.training);
+                newDogDetails.append("introduction", formData.introduction);
                 newDogDetails.append("img", `/images/${selectedFile.name}`);
                 newDogDetails.append('file', selectedFile);
 
@@ -50,13 +57,8 @@ function AdminAddDog({ setaddNewDog, setDogs }) {
     }
 
     return (
-        
-        <form className='adminAddDog' onSubmit={(e) => {
-                e.preventDefault();
-                setSubmit(true);
-            }}>
-         
-            <h1>Add new doggo!</h1>
+        <form className='adminAddDog' onSubmit={handleSubmit}>
+            <h3>Add new doggo!</h3>
             <div>
                 <label htmlFor="dogImage" className='custom-file-upload'>
                     Upload photo
@@ -68,27 +70,26 @@ function AdminAddDog({ setaddNewDog, setDogs }) {
                 }} required />
             </div>
             <div>
-                <input type="text" placeholder='Name' name="name" id="name" value={nameInput} onChange={(e) => setNameInput(e.target.value)} required />
+                <input type="text" placeholder='Name' name="name" id="name" value={formData.name} onChange={handleChange} required />
             </div>
             <div>
-                <input type="text" name="breed" placeholder='Breed' id="breed" value={breedInput} onChange={(e) => setBreedInput(e.target.value)} required />
+                <input type="text" name="breed" placeholder='Breed' id="breed" value={formData.breed} onChange={handleChange} required />
             </div>
             <div>
-                <input type="text" name="gender" placeholder='Gender' id="gender" value={genderInput} onChange={(e) => setGenderInput(e.target.value)} required />
+                <input type="text" name="gender" placeholder='Gender' id="gender" value={formData.gender} onChange={handleChange} required />
             </div>
             <div>
-                <textarea name="training" id="training" placeholder='Training' cols="30" rows="5" value={trainingInput} onChange={(e) => setTrainingInput(e.target.value)} required ></textarea>
+                <textarea name="training" id="training" placeholder='Training' cols="30" rows="5" value={formData.training} onChange={handleChange} required ></textarea>
             </div>
             <div>
-                <textarea name="introduction" id="introduction" placeholder='Introduction' cols="50" rows="5" value={introductionInput} onChange={(e) => setIntroductionInput(e.target.value)} required ></textarea>
+                <textarea name="introduction" id="introduction" placeholder='Introduction' cols="50" rows="5" value={formData.introduction} onChange={handleChange} required ></textarea>
             </div>
             <div>
                 <button className='submitNewDog'>Submit</button>
                 <button className='cancelNewDog' type='button' onClick={cancelAddDog}>Cancel</button>
             </div>
         </form>
-        
     )
 }
 
-export default AdminAddDog
+export default AdminAddDog;

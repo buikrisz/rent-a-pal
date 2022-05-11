@@ -1,8 +1,6 @@
-import React, {useState} from 'react'
-import DogCards from '../DogCards/DogCards'
-import './DogSelector.css'
-import AdminAddDog from '../AdminAddDog/AdminAddDog';
-
+import React, { useState } from 'react';
+import './DogSelector.css';
+import { DogCards, AdminAddDog } from '../../components';
 
 function DogSelector({ dogs, setChosenDog, readMore, setReadMore, setDogs, user }) {
   const [addNewDog, setaddNewDog] = useState(false);
@@ -15,4 +13,4 @@ function DogSelector({ dogs, setChosenDog, readMore, setReadMore, setDogs, user 
   )
 }
 
-export default DogSelector
+export default DogSelector;

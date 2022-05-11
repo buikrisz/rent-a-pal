@@ -7,27 +7,24 @@
 
 .actionButton.blue {
     background-color: #167EA5;
-    color: white;
-
+    color: #fff;
 }
 
 .actionButton.blue:hover {
-
-    background-color: white;
+    background-color: #fff;
     color: #167EA5;
     border: solid 2px #167EA5;
 }
 
 .actionButton.white {
-    background-color: white;
+    background-color: #fff;
     color: #167EA5;
     border: solid 2px #167EA5;
 }
 
 .actionButton.white:hover {
     background-color: #167EA5;
-    color: white;
-   
+    color: #fff;
 }
 
 

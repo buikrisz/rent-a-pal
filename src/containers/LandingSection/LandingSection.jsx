@@ -1,13 +1,11 @@
-import React from 'react'
-import ActionButton from '../ActionButton/ActionButton'
-import Header from '../Header/Header'
-import Icon from '../Icon/Icon'
-import './LandingSection.css'
+import React from 'react';
+import './LandingSection.css';
+import { ActionButton, Header, Icon } from '../../components';
 
-function LandingSection() {
+function LandingSection({ user, setUser, tryLogin, setTryLogin }) {
   return (
     <section id='landingPageSection'>
-      <Header />
+      <Header user={user} setUser={setUser} tryLogin={tryLogin} setTryLogin={setTryLogin} />
       <div className='content'>
           <h1>Rent-A-Pal</h1>
           <h3>Bring the WOOF under your ROOF!</h3>
@@ -30,4 +28,4 @@ function LandingSection() {
   )
 }
 
-export default LandingSection
+export default LandingSection;

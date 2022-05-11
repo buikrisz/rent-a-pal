@@ -1,19 +1,16 @@
-import React from 'react'
-import './DogDetails.css'
+import React from 'react';
+import './DogDetails.css';
 import { FaTimes } from 'react-icons/fa';
 
-function DogDetails({ chosenDogDetails, setDogDetails }) {
-    function removeDetails() {
-        setDogDetails(false)
+function DogDetails({ chosenDogDetails, setShowDogDetails }) {
+    function handleClick() {
+        setShowDogDetails(false)
     }
   
     return (
     <div className='dogDetails'>
-        <button className='iconBtn' onClick={removeDetails}><FaTimes className='icon' /></button>
-        <div className='imgDiv'>
-
+        <button className='iconBtn' onClick={handleClick}><FaTimes className='icon' /></button>
         <img src={chosenDogDetails.img} alt="" />
-        </div>
         <div>
             <h4>Name:</h4>
             <h3>{chosenDogDetails.name}</h3>
@@ -34,9 +31,8 @@ function DogDetails({ chosenDogDetails, setDogDetails }) {
             <h4>Introduction:</h4>
             <h3>{chosenDogDetails.introduction}</h3>
         </div>
-        
     </div>
   )
 }
 
-export default DogDetails
+export default DogDetails;

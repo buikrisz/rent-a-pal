@@ -1,10 +1,6 @@
 import React, {useState, useEffect} from 'react';
 import './App.css';
-import DogSelector from './components/DogSelector/DogSelector';
-import FormSection from './components/FormSection/FormSection';
-import LandingSection from './components/LandingSection/LandingSection';
-import AdminLogin from './components/AdminLogin/AdminLogin';
-import { FaRegUser, FaCheckSquare } from 'react-icons/fa';
+import { DogSelector, FormSection, LandingSection } from './containers';
 
 function App() {
   const [dogs, setDogs] = useState([]);
@@ -32,9 +28,9 @@ function App() {
       fetch("/api/user/validate_session")
       .then(res => res.json())
       .then(data => {
-        console.log(data);
+
         const { username, reservedDogID, email, message } = data;
-        console.log("reserved", reservedDogID);
+
         if (message === "Authenticated") {
           username === "admin" ? setUser({ loggedIn: true, admin: true, username, email, reservedDogID }) : setUser({ loggedIn: true, admin: false, username, email, reservedDogID })
         }
@@ -53,16 +49,9 @@ function App() {
 
   return (
     <div className="App">
-      <button className='adminBtn' onClick={() => {
-          setTryLogin(!tryLogin)
-        }}>
-        <FaRegUser className='loginIcon'/>
-        {user.loggedIn && <FaCheckSquare className='loggedInIcon' />}
-      </button>
-      <LandingSection />
+      <LandingSection user={user} setUser={setUser} tryLogin={tryLogin} setTryLogin={setTryLogin} />
       <DogSelector dogs={dogs} setChosenDog={setChosenDog} readMore={readMore} setReadMore={setReadMore} user={user} setDogs={setDogs} />
       <FormSection chosenDog={chosenDogInfo} setDogs={setDogs} user={user} setUser={setUser} />
-      {tryLogin && <AdminLogin setTryLogin={setTryLogin} user={user} setUser={setUser} />}
     </div>
   );
 }

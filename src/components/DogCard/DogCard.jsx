@@ -3,22 +3,22 @@ import './DogCard.css';
 import { FaTrash } from 'react-icons/fa';
 import DeleteDogPopup from '../DeleteDogPopup/DeleteDogPopup';
 
-function DogCard({ id, name, breed, gender, training, img, reserved, setChosenDog, setReadMore, setDogDetails, setDogs, user }) {
+function DogCard({ dog, setChosenDog, setReadMore, setShowDogDetails, setDogs, user }) {
     
+    const { _id, name, breed, gender, training, img, reserved } = dog;
     const [submitDeleteDog, setSubmitDeleteDog] = useState(false);
     const [deletePopup, setDeletePopup] = useState(false);
     const [reservedForUser, setReservedForUser] = useState(false);
 
-    function chooseDog(e) {
-        setChosenDog(e.target.dataset.id)
+    function handleClick(e) {
+        if (e.target.id === "seeMoreBtn") {
+            setReadMore(e.target.dataset.id);
+            setShowDogDetails(true);
+        } else if (e.target.id === "adoptBtn") {
+            setChosenDog(e.target.dataset.id);
+        }
     }
     
-    function readMoreFunc(e) {
-        setReadMore(e.target.dataset.id)
-        setDogDetails(true)
-    }
-    
-
     useEffect(
        () => {
             if (submitDeleteDog) {
@@ -27,7 +27,7 @@ function DogCard({ id, name, breed, gender, training, img, reserved, setChosenDo
                     headers: {
                         'Content-Type': 'application/json'
                     },
-                    body: JSON.stringify({id: id})
+                    body: JSON.stringify({ id: _id })
                 })
                 .then(res => res.json())
                 .then(dogs => {
@@ -41,10 +41,7 @@ function DogCard({ id, name, breed, gender, training, img, reserved, setChosenDo
 
     useEffect(
         () => {
-            console.log(user.loggedIn);
-            console.log(user.reservedDogID);
-            if (user.loggedIn && user.reservedDogID === id) { 
-                console.log("happening inside");
+            if (user.loggedIn && user.reservedDogID === _id) { 
                 setReservedForUser(true);
             } else {
                 setReservedForUser(false);
@@ -58,7 +55,10 @@ function DogCard({ id, name, breed, gender, training, img, reserved, setChosenDo
             {deletePopup && <DeleteDogPopup setDeletePopup={setDeletePopup} setSubmitDeleteDog={setSubmitDeleteDog} name={name} />}
             <div className={`dogCard ${reserved ? "reserved" : "available"} ${reservedForUser ? "reservedForUser" : "notReservedForUser"}`}>
                 <div className='img-div'>
-                    {reserved && <img src='/images/reserved.png' alt="" className='reserved-img'/>}
+                    {
+                        reserved && 
+                        <img src='/images/reserved.png' alt="" className='reserved-img'/>
+                    }
                     <img src={img} alt="" />   
                 </div>
                 <div className='textDiv'>
@@ -79,15 +79,18 @@ function DogCard({ id, name, breed, gender, training, img, reserved, setChosenDo
                     </div>
                 </div>
                 <div className='dogCardButtons'>
-                    <button data-id={id} className='adopt' onClick={chooseDog}>Adopt</button>
-                    <button data-id={id} className='seeMore' onClick={readMoreFunc} >See More</button>
-                    {(user.loggedIn && user.username === "admin") && <button data-id={id} className='deleteBtn' onClick={(e) => {
-                        setDeletePopup(true);
-                    }} ><FaTrash className='deleteIcon' /></button>}
+                    <button data-id={_id} id='adoptBtn' onClick={handleClick} >Adopt</button>
+                    <button data-id={_id} id='seeMoreBtn' onClick={handleClick} >See More</button>
+                    {
+                        (user.loggedIn && user.username === "admin") && 
+                        <button data-id={_id} id='deleteBtn' onClick={() => setDeletePopup(true)} >
+                            <FaTrash className='deleteIcon' />
+                        </button>
+                    }
                 </div>
             </div>
         </>
     )
 }
 
-export default DogCard
+export default DogCard;

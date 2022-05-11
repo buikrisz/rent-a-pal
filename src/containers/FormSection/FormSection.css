@@ -7,35 +7,46 @@
     align-items: center;
 }
 
-
 #formSection .form {
-    width: auto;
     display: flex;
     flex-direction: column;
     justify-content: center;
-    align-items: center;
+    gap: 20px;
+    width: 550px;
     font-size: 20px;
-    margin: 0;
-    padding: 20px;
 }
 
-.form input{
+#formSection .form span {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 550px;
+    gap: 20px;
+}
+
+.form input {
     height: 45px;
+    width: 250px;
     font-size: 20px;
     border: none #caf0f8;
     border-radius: 10px;
-    padding: 10px;
-    gap: 15px;
-    margin: 15px;
-    border-radius: 20pxpx;
+    padding: 0 20px;
     background: #FFF;
     border: #167EA5 2px solid;
-    /*box-shadow: inset 6px 6px 8px #dac45c,
-                inset -6px -6px 8px #ffff7a; */
 }
 
-.form input:focus{
-    border: 4px solid #167EA5;
+.form textarea {
+    align-self: center;
+    width: 550px;
+    font-size: 20px;
+    border-radius: 10px;
+    padding: 10px 10px;
+    border-radius: 10px;
+    border: 2px solid #167EA5;
+}
+
+.form textarea:focus, .form input:focus{
+    border: 2px solid #0e455a;
 }
 
 ::placeholder {
@@ -43,16 +54,16 @@
 }
 
 #formSection button {
+    align-self: center;
     height: 60px;
     width: 180px;
+    margin-top: 30px;
     border-radius: 10px;
     font-size: 25px;
     background-color: white;
     color: #167EA5;
     border: solid 2px #167EA5;
 }
-
-
 
 #formSection button:hover{
     background-color: #167EA5;
@@ -71,8 +82,11 @@
 }
 
 .fieldset {
-    width: 1200px;
-    height: 900px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 800px;
+    height: 850px;
     box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
     backdrop-filter: blur( 3px );
     -webkit-backdrop-filter: blur( 3px );
@@ -85,30 +99,17 @@ h2{
     display: flex;
     align-items: center;
     justify-content: center;
+    width: 550px;
+    margin-bottom: 80px;
     color: #167EA5;
     font-weight: bold;
-}
-
-.form textarea {
-    font-size: 20px;
-    border: none #caf0f8;
-    border-radius: 10px;
-    padding: 10px;
-    gap: 15px;
-    margin: 15px;
-    border-radius: 10px;
-    background: #FFF;
-    border: #167EA5 2px solid;
-}
-
-.form textarea:focus {
-    border: 4px solid #167EA5;
+    text-align: center;
 }
 
 .fieldSetChosenDog{
     top: 50px;
     width: 800px;
-    height: 800px;
+    height: 750px;
     position: relative;
     margin: 20px;
     background-color: #FFF;
@@ -160,8 +161,4 @@ h2{
     display: flex;
     align-items: baseline;
     padding-left: 60px;
-}
-
-input:disabled {
-    cursor: not-allowed;
 }
