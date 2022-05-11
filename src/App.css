@@ -44,32 +44,32 @@ ol, ul, li {
 /* CSS reset end */
 
 @font-face {
-  font-family: "Quietly Endure";
-  src: url("./fonts/Quietly_Endure.ttf")
+    font-family: "Quietly Endure";
+    src: url("./fonts/Quietly_Endure.ttf")
 }
 
 @font-face {
-  font-family: "SF UI";
-  src: url("./fonts/sf-ui-display-bold-58646a511e3d9.otf");
-  font-weight: bold;
+    font-family: "SF UI";
+    src: url("./fonts/sf-ui-display-bold-58646a511e3d9.otf");
+    font-weight: bold;
 }
 
 @font-face  {
-  font-family: "SF UI";
-  src: url("./fonts/sf-ui-display-light-58646b33e0551.otf");
-  font-weight: lighter;
+    font-family: "SF UI";
+    src: url("./fonts/sf-ui-display-light-58646b33e0551.otf");
+    font-weight: lighter;
 }
 
 html {
-  scroll-behavior: smooth;
+    scroll-behavior: smooth;
 }
 
 body {
-  font-family: "SF UI";
-  font-weight: lighter;
+    font-family: "SF UI";
+    font-weight: lighter;
 }
 
 #root {
-  min-height: 100vh;
-  width: 100%;
+    min-height: 100vh;
+    width: 100%;
 }
