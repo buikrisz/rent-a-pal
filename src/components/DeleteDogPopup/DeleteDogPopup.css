@@ -55,3 +55,9 @@
 .deleteDogPopup .doggoName {
     font-weight: 600;
 }
+
+@media (max-width: 420px) {
+    .deleteDogPopup {
+        width: 360px;
+    }
+}

@@ -196,6 +196,7 @@
     
     #formSection .fieldSetChosenDog p {
         font-size: 18px;
+        width: 320px;
     }
     
     #formSection .fieldSetChosenDog h5 {

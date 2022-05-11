@@ -108,3 +108,34 @@
     bottom: 5px;
     color: #155d24;
 }
+
+@media (max-width: 420px) {
+    .adminAddDog {
+        gap: 40px;
+        width: 360px;
+    }
+    
+    .adminAddDog div input {
+        width: 320px;;
+    }
+    
+    .adminAddDog div textarea {
+        width: 320px;
+    }
+
+    .adminAddDog h3 {
+        font-size: 35px;
+    }
+    
+    .adminAddDog .cancelNewDog {
+        width: 120px;
+    }
+    
+    .adminAddDog .submitNewDog {
+        width: 120px;
+    }
+    
+    .custom-file-upload {
+        height: 50px;
+    }
+}

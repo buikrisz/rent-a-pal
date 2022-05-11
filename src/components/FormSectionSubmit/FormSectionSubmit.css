@@ -16,3 +16,23 @@
     object-fit: cover;
 }
 
+.orderReceived h2 {
+    text-align: center;
+}
+
+@media (max-width: 420px) {
+    .orderReceived {
+        gap: 50px;
+        width: 360px;
+        height: 600px;
+    }
+    
+    .orderReceived img {
+        width: 280px;
+        height: 310px;
+    }
+    
+    .orderReceived h2 {
+        width: 320px;
+    }
+}

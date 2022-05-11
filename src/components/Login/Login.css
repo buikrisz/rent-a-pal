@@ -92,3 +92,23 @@
 .adminLogout:hover {
     background-color: #fff;
 }
+
+@media (max-width: 420px) {
+    .adminLogin {
+        top: 80px;
+        right: 5px;
+        width: 360px;
+        background-color: #fff;
+    }
+    
+    .adminLogin div input{
+        background-color: #167EA5;
+        font-size: 15px;
+        color: #fff;
+    }
+    
+    .adminLogout {
+        top: 70px;
+        right: 5px;
+    }
+}
