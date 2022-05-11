@@ -49,3 +49,42 @@
     gap: 50px;
     height: 100px;
 }
+
+@media (max-width: 420px) {
+    #landingPageSection {
+        align-items: center;
+        min-height: 100vh;
+    }
+    
+    #landingPageSection .content {
+        height: 500px;
+        width: 100%;
+    }
+    
+    #landingPageSection .content h1 {
+        width: 90%;
+        font-size: 50px;
+        text-align: center;
+    }
+    
+    #landingPageSection .content h3 {
+        width: 90%;
+        font-size: 25px;
+        text-align: center;
+    }
+    
+    #landingPageSection .content p {
+        width: 80%;
+        font-size: 15px;
+    }
+    
+    #landingPageSection .content .buttons {
+        gap: 10px; /*After action buttons*/
+    }
+    
+    #landingPageSection .icons {
+        flex-wrap: wrap;
+        gap: 30px;
+        height: fit-content;
+    }
+}

@@ -27,5 +27,11 @@
     color: #fff;
 }
 
-
+@media (max-width: 420px) { 
+    .actionButton {
+        height: 35px;
+        width: 100px;
+        font-size: 14px;
+    }
+}
     
