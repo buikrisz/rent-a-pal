@@ -44,6 +44,70 @@ header .adminBtn .loggedInIcon {
     color: #094c15;
 }
   
+@media (max-width: 1460px) {
+    header {
+        height: 150px;
+        width: 100%;
+        padding: 0 25px;
+    }
+    
+    header nav {
+        gap: 50px;
+        font-size: 24px;
+    }
+    
+    header #logoinheader {
+        height: 120px;
+        width: 180px;
+    }
+
+    header .adminBtn {
+        position: relative;
+        height: 50px;
+        width: 180px;
+    }
+      
+    header .adminBtn .loginIcon {
+        height: 30px;
+        width: 30px;
+    }
+      
+    header .adminBtn .loggedInIcon {
+        height: 10px;
+        width: 10px;
+        color: #094c15;
+    }
+}
+
+@media (max-width: 840px) { 
+    header nav {
+        gap: 20px;
+        font-size: 18px;
+    }
+    
+    header #logoinheader {
+        height: 90px;
+        width: 140px;
+    }
+
+    header .adminBtn {
+        position: relative;
+        height: 50px;
+        width: 140px;
+    }
+      
+    header .adminBtn .loginIcon {
+        height: 30px;
+        width: 30px;
+    }
+      
+    header .adminBtn .loggedInIcon {
+        height: 10px;
+        width: 10px;
+        color: #094c15;
+    }
+}
+
 @media (max-width: 420px) { 
     header {
         height: 100px;
@@ -60,21 +124,8 @@ header .adminBtn .loggedInIcon {
         height: 50px;
         width: 90px;
     }
-    /**/
+
     header .adminBtn {
-        position: relative;
-        height: 50px;
         width: 50px;
-    }
-      
-    header .adminBtn .loginIcon {
-        height: 30px;
-        width: 30px;
-    }
-      
-    header .adminBtn .loggedInIcon {
-        height: 10px;
-        width: 10px;
-        color: #094c15;
     }
 }

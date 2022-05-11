@@ -109,6 +109,41 @@
     color: #155d24;
 }
 
+@media (max-width: 840px) {
+    .adminAddDog {
+        width: 90%;
+        height: 85%;
+    }
+    
+    .adminAddDog div {
+        width: 80%;
+    }
+    
+    .adminAddDog div input {
+        width: 100%;
+    }
+    
+    .adminAddDog div textarea {
+        width: 100%;
+    }
+
+    .adminAddDog h3 {
+        font-size: 35px;
+    }
+    
+    .adminAddDog .cancelNewDog {
+        width: 160px;
+    }
+    
+    .adminAddDog .submitNewDog {
+        width: 160px;
+    }
+    
+    .custom-file-upload {
+        height: 70px;
+    }
+}
+
 @media (max-width: 420px) {
     .adminAddDog {
         gap: 40px;
@@ -116,7 +151,7 @@
     }
     
     .adminAddDog div input {
-        width: 320px;;
+        width: 320px;
     }
     
     .adminAddDog div textarea {

@@ -54,16 +54,42 @@
     width: 500px;
 }
 
-@media (max-width: 420px) {
+@media (max-width: 840px) {
     .dogDetails {
         gap: 10px;
+        width: 90%;
+    }
+    
+    .dogDetails .icon {
+        z-index: 3;
+    }
+    
+    .dogDetails div {
+        display: flex;
+        justify-content: center;
+        gap: 10px;
+        width: 90%;
+    }
+    
+    .dogDetails div h4 {
+        width: 30%;
+        font-size: 20px;
+    }
+    
+    .dogDetails div h3 {
+        width: 70%;
+        font-size: 16px;
+    }
+}
+
+@media (max-width: 420px) {
+    .dogDetails {
         width: 360px;
     }
     
     .dogDetails .icon {
         height: 30px;
         width: 30px;
-        z-index: 3;
     }
     
     .dogDetails div {

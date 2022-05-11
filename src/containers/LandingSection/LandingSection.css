@@ -50,41 +50,78 @@
     height: 100px;
 }
 
-@media (max-width: 420px) {
+@media (max-width: 1650px) {
+    #landingPageSection {
+        background-image: url("../../../public/images/1650bg.png");
+    }
+}
+
+@media (max-width: 1460px) {
     #landingPageSection {
         align-items: center;
-        min-height: 100vh;
+        background-image: url("../../../public/images/1280bg.png");
+    }
+}
+
+@media (max-width: 840px) {
+    #landingPageSection {
+        align-items: center;
+        background-image: url("../../../public/images/840bg.png");
     }
     
     #landingPageSection .content {
-        height: 500px;
+        gap: 60px;
+        height: 850px;
         width: 100%;
     }
     
     #landingPageSection .content h1 {
         width: 90%;
-        font-size: 50px;
+        font-size: 100px;
         text-align: center;
     }
     
     #landingPageSection .content h3 {
         width: 90%;
-        font-size: 25px;
+        font-size: 35px;
         text-align: center;
     }
     
     #landingPageSection .content p {
         width: 80%;
-        font-size: 15px;
+        font-size: 20px;
+        text-align: center;
     }
     
     #landingPageSection .content .buttons {
-        gap: 10px; /*After action buttons*/
+        gap: 50px;
     }
     
     #landingPageSection .icons {
         flex-wrap: wrap;
         gap: 30px;
         height: fit-content;
+    }
+}
+
+@media (max-width: 420px) {
+    #landingPageSection .content {
+        height: 500px;
+    }
+    
+    #landingPageSection .content h1 {
+        font-size: 50px;
+    }
+    
+    #landingPageSection .content h3 {
+        font-size: 25px;
+    }
+    
+    #landingPageSection .content p {
+        font-size: 15px;
+    }
+    
+    #landingPageSection .content .buttons {
+        gap: 10px;
     }
 }

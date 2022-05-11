@@ -20,9 +20,20 @@
     text-align: center;
 }
 
-@media (max-width: 420px) {
+@media (max-width: 840px) {
     .orderReceived {
         gap: 50px;
+        width: 90%;
+        height: 700px;
+    }
+    
+    .orderReceived h2 {
+        width: 60%;
+    }
+}
+
+@media (max-width: 420px) {
+    .orderReceived {
         width: 360px;
         height: 600px;
     }
