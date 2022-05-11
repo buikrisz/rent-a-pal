@@ -19,13 +19,13 @@ function LandingSection() {
           <ActionButton color="white" text="Donation" />
         </div>
       </div>
-      <div className='icons'>
-        <Icon text="Breed" imgSrc="/images/icon_breed.png" />
-        <Icon text="Feed" imgSrc="/images/icon_food.png" />
-        <Icon text="Train" imgSrc="/images/icon_training.png" />
-        <Icon text="Groom" imgSrc="/images/icon_grooming.png" />
-        <Icon text="Sit?" imgSrc="/images/icon_size.png" />
-      </div>
+        <div className='icons'>
+          <Icon text="Breed" imgSrc="/images/icon_breed.png" />
+          <Icon text="Feed" imgSrc="/images/icon_food.png" />
+          <Icon text="Train" imgSrc="/images/icon_training.png" />
+          <Icon text="Groom" imgSrc="/images/icon_grooming.png" />
+          <Icon text="Sit?" imgSrc="/images/icon_size.png" />
+        </div>
     </section>
   )
 }

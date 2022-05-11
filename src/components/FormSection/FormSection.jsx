@@ -2,30 +2,35 @@ import React, {useEffect, useState} from 'react'
 import './FormSection.css'
 import FormSectionSubmit from '../FormSectionSubmit/FormSectionSubmit';
 
-function FormSection({chosenDog, setDogs}) {
+function FormSection({ chosenDog, setDogs, user, setUser }) {
 
-  const [formData, setFormData] = useState(
-    {newOwnerName: "", newOwnerZip: "", newOwnerCity: "", newOwnerStreet: "", newOwnerPhone: "", newOwnerEmail: "", newOwnerMotivation: ""}
-  )
-
-  function handleChange(e) {
-    setFormData({...formData, [e.target.name]: e.target.value});
-  }
+  const [newOwnerName, setNewOwnerName] = useState("");
+  const [zipInput, setZipInput] = useState("");
+  const [cityInput, setCityInput] = useState("");
+  const [streetInput, setStreetInput] = useState("");
+  const [phoneInput, setPhoneInput] = useState("");
+  const [emailInput, setEmailInput] = useState("");
+  const [motivation, setMotivation] = useState("");
 
   const [newOwnerSubmit, setNewOwnerSubmit] = useState(false);
-
   const [ordered, setOrdered] = useState(false);
 
   useEffect(
     () => {
         if (newOwnerSubmit && chosenDog) {
             const newOwnerDetails = {
-                ...formData,
-                chosenDogId: chosenDog.id,
+                name: newOwnerName,
+                zip: zipInput,
+                city: cityInput,
+                street: streetInput,
+                phone: phoneInput,
+                email: emailInput,
+                motivation: motivation,
+                chosenDogId: chosenDog._id,
                 chosenDogName: chosenDog.name,
             }
     
-            fetch("http://127.0.0.1:9000/new_owner_info", {
+            fetch("/api/user/new_owner_info", {
                 method: "POST",
                 headers: {
                     'Content-Type': 'application/json'
@@ -34,37 +39,58 @@ function FormSection({chosenDog, setDogs}) {
             })
             .then(res => res.json())
             .then(dogs => {
-              setDogs(dogs);
+              setUser({ ...user, reservedDogID: dogs.reservedDogID })
+              setDogs(dogs.body);
             })
             setOrdered(true);
         }
-        return setNewOwnerSubmit(false);
+        return () => setNewOwnerSubmit(false);
     },
     [newOwnerSubmit]
-)
- 
+  )
+
+  useEffect(
+    () => {
+      if (user.loggedIn) {
+        setNewOwnerName(user.username);
+        setEmailInput(user.email);
+      } 
+    },
+    [user]
+  )
 
   return (
     <section id='formSection'>
       {!ordered && (
       <fieldset className="fieldset">
-        <h2>Please provide your contact information</h2>
+        <h2>Please add your contact information, so we can send you the doggo of your dreams and fantasies!</h2>
         <legend><img className="happydoggo" src="/images/doggo.png" alt=""/></legend>
         <form className="form" onSubmit={(e) => {
             e.preventDefault();
             setNewOwnerSubmit(true);
         }}>        
-          <input type="text" name="newOwnerName" placeholder="Name" value={formData.newOwnerName} onChange={handleChange} />
+          <label>Please add your name:</label>
+          {
+            user.loggedIn ?
+            <input type="text" name="text" placeholder="your name" value={newOwnerName} onChange={(e) => setNewOwnerName(e.target.value)} required disabled /> : 
+            <input type="text" name="text" placeholder="your name" value={newOwnerName} onChange={(e) => setNewOwnerName(e.target.value)} required />
+          }
+          <label>Please add your address:</label>
           <span>
-            <input type="text" name="newOwnerZip" placeholder="ZIP" value={formData.newOwnerZip} onChange={handleChange} />
-            <input type="text" name="newOwnerCity" placeholder="City" value={formData.newOwnerCity} onChange={handleChange} />
+            <input type="text" name="zip" placeholder="zip" value={zipInput} onChange={(e) => setZipInput(e.target.value)} />
+            <input type="text" name="city" placeholder="city" value={cityInput} onChange={(e) => setCityInput(e.target.value)} />
           </span>
-          <input type="text" name="newOwnerStreet" placeholder="Street and number" value={formData.newOwnerStreet} onChange={handleChange} />
+          <input type="text" name="street" placeholder="streetname and number" value={streetInput} onChange={(e) => setStreetInput(e.target.value)} />
           <span>
-            <input type="text" name="newOwnerPhone" placeholder="06-30-000-000" value={formData.newOwnerPhone} onChange={handleChange} />
-            <input type="email" name="newOwnerEmail" placeholder="E-mail" value={formData.newOwnerEmail} onChange={handleChange} />
+            <input type="text" name="phone" placeholder="(06)XX-XXX-XXXX" value={phoneInput} onChange={(e) => setPhoneInput(e.target.value)} />
+            {
+              user.loggedIn ? 
+              <input type="email" name="email" placeholder="e-mail" value={emailInput} onChange={(e) => setEmailInput(e.target.value)} required disabled /> :
+              <input type="email" name="email" placeholder="e-mail" value={emailInput} onChange={(e) => setEmailInput(e.target.value)} required />
+            }
           </span>
-          <textarea rows="2" cols="60" maxLength="1000" placeholder="Tell us why you would be a great owner of this puppy" name="newOwnerMotivation" value={formData.newOwnerMotivation} onChange={handleChange} />
+          <label>Please tell us, why do you want the chosen doggo in your household and tell us more about yourself! (inspiration, dreams, do you cry under the shower, etc.) Maximum 1000 character!</label>
+          <textarea rows="2" cols="60" maxLength="1000" value={motivation} onChange={(e) => setMotivation(e.target.value)} />
           <button className="submitBtn">Order your pal!</button>
         </form>
       </fieldset>)}

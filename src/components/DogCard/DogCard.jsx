@@ -3,8 +3,12 @@ import './DogCard.css';
 import { FaTrash } from 'react-icons/fa';
 import DeleteDogPopup from '../DeleteDogPopup/DeleteDogPopup';
 
-function DogCard({ id, name, breed, gender, training, img, reserved, setChosenDog, setReadMore, setDogDetails, adminLoggedIn, setDogs }) {
+function DogCard({ id, name, breed, gender, training, img, reserved, setChosenDog, setReadMore, setDogDetails, setDogs, user }) {
     
+    const [submitDeleteDog, setSubmitDeleteDog] = useState(false);
+    const [deletePopup, setDeletePopup] = useState(false);
+    const [reservedForUser, setReservedForUser] = useState(false);
+
     function chooseDog(e) {
         setChosenDog(e.target.dataset.id)
     }
@@ -14,13 +18,11 @@ function DogCard({ id, name, breed, gender, training, img, reserved, setChosenDo
         setDogDetails(true)
     }
     
-    const [submitDeleteDog, setSubmitDeleteDog] = useState(false);
-    const [deletePopup, setDeletePopup] = useState(false);
 
     useEffect(
        () => {
             if (submitDeleteDog) {
-                fetch("http://127.0.0.1:9000/delete_dog", {
+                fetch("/api/dogs/delete_dog", {
                     method: "POST",
                     headers: {
                         'Content-Type': 'application/json'
@@ -29,7 +31,7 @@ function DogCard({ id, name, breed, gender, training, img, reserved, setChosenDo
                 })
                 .then(res => res.json())
                 .then(dogs => {
-                    setDogs(dogs)
+                    setDogs(dogs.body)
                 })
             }
             return () => setSubmitDeleteDog(false);
@@ -37,10 +39,24 @@ function DogCard({ id, name, breed, gender, training, img, reserved, setChosenDo
        [submitDeleteDog]
     )
 
+    useEffect(
+        () => {
+            console.log(user.loggedIn);
+            console.log(user.reservedDogID);
+            if (user.loggedIn && user.reservedDogID === id) { 
+                console.log("happening inside");
+                setReservedForUser(true);
+            } else {
+                setReservedForUser(false);
+            }
+        },
+        [user]
+    )
+
     return (
         <>  
             {deletePopup && <DeleteDogPopup setDeletePopup={setDeletePopup} setSubmitDeleteDog={setSubmitDeleteDog} name={name} />}
-            <div className={`dogCard ${reserved ? "reserved" : "available"}`}>
+            <div className={`dogCard ${reserved ? "reserved" : "available"} ${reservedForUser ? "reservedForUser" : "notReservedForUser"}`}>
                 <div className='img-div'>
                     {reserved && <img src='/images/reserved.png' alt="" className='reserved-img'/>}
                     <img src={img} alt="" />   
@@ -65,7 +81,7 @@ function DogCard({ id, name, breed, gender, training, img, reserved, setChosenDo
                 <div className='dogCardButtons'>
                     <button data-id={id} className='adopt' onClick={chooseDog}>Adopt</button>
                     <button data-id={id} className='seeMore' onClick={readMoreFunc} >See More</button>
-                    {adminLoggedIn && <button data-id={id} className='deleteBtn' onClick={(e) => {
+                    {(user.loggedIn && user.username === "admin") && <button data-id={id} className='deleteBtn' onClick={(e) => {
                         setDeletePopup(true);
                     }} ><FaTrash className='deleteIcon' /></button>}
                 </div>

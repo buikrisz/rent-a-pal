@@ -1,7 +1,5 @@
 /* CSS reset start */
 
-
-
 * {
   margin: 0;
   padding: 0;
@@ -52,18 +50,18 @@ ol, ul, li {
 
 @font-face {
   font-family: "Quietly Endure";
-  src: url("../public/fonts/Quietly_Endure.ttf")
+  src: url("./fonts/Quietly_Endure.ttf")
 }
 
 @font-face {
   font-family: "SF UI";
-  src: url("../public/fonts/sf-ui-display-bold-58646a511e3d9.otf");
+  src: url("./fonts/sf-ui-display-bold-58646a511e3d9.otf");
   font-weight: bold;
 }
 
 @font-face  {
   font-family: "SF UI";
-  src: url("../public/fonts/sf-ui-display-light-58646b33e0551.otf");
+  src: url("./fonts/sf-ui-display-light-58646b33e0551.otf");
   font-weight: lighter;
 
 }

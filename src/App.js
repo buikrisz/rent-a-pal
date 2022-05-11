@@ -8,19 +8,36 @@ import { FaRegUser, FaCheckSquare } from 'react-icons/fa';
 
 function App() {
   const [dogs, setDogs] = useState([]);
-  const [chosenDog, setChosenDog] = useState()
-  const [readMore, setReadMore] = useState()
+  const [chosenDog, setChosenDog] = useState(null);
+  const [readMore, setReadMore] = useState(null);
+  const [chosenDogInfo, setChosenDogInfo] = useState(null);
 
-  const [adminTryLogin, setAdminTryLogin] = useState(false);
-  const [adminTryLogout, setAdminTryLogout] = useState(false);
-  const [adminLoggedIn, setAdminLoggedIn] = useState(false);
+  const [tryLogin, setTryLogin] = useState(false);
+  const [user, setUser] = useState({
+    loggedIn: false,
+    admin: false,
+    username: "",
+    email: "",
+    reservedDogID: null,
+  });
 
   useEffect(
     () => {
-      fetch("http://127.0.0.1:9000/dogs")
+      fetch("/api/dogs")
       .then(res => res.json())
       .then(dogsData => {
-        setDogs(dogsData);
+        setDogs(dogsData.body);
+      });
+
+      fetch("/api/user/validate_session")
+      .then(res => res.json())
+      .then(data => {
+        console.log(data);
+        const { username, reservedDogID, email, message } = data;
+        console.log("reserved", reservedDogID);
+        if (message === "Authenticated") {
+          username === "admin" ? setUser({ loggedIn: true, admin: true, username, email, reservedDogID }) : setUser({ loggedIn: true, admin: false, username, email, reservedDogID })
+        }
       })
     },
     []
@@ -28,24 +45,24 @@ function App() {
 
   useEffect(
     () => {
-      localStorage.getItem('adminLoggedIn') === "21232f297a57a5a743894a0e4a801fc3" && setAdminLoggedIn(true) 
+      const selectedDog = dogs.find(dog => dog._id === chosenDog);
+      chosenDog && setChosenDogInfo(selectedDog);
     },
-    []
+    [chosenDog]
   )
 
   return (
     <div className="App">
       <button className='adminBtn' onClick={() => {
-          setAdminTryLogin(true)
-          adminTryLogout ? setAdminTryLogout(false) : setAdminTryLogout(true)
+          setTryLogin(!tryLogin)
         }}>
         <FaRegUser className='loginIcon'/>
-        {adminLoggedIn && <FaCheckSquare className='loggedInIcon' />}
+        {user.loggedIn && <FaCheckSquare className='loggedInIcon' />}
       </button>
       <LandingSection />
-      <DogSelector dogs={dogs} setChosenDog={setChosenDog} readMore={readMore} setReadMore={setReadMore} setAdminTryLogin={setAdminTryLogin} adminLoggedIn={adminLoggedIn} setDogs={setDogs} />
-      <FormSection chosenDog={dogs[chosenDog]} setDogs={setDogs} />
-      {adminTryLogin && <AdminLogin setAdminLoggedIn={setAdminLoggedIn} setAdminTryLogin={setAdminTryLogin} adminLoggedIn={adminLoggedIn} adminTryLogout={adminTryLogout} />}
+      <DogSelector dogs={dogs} setChosenDog={setChosenDog} readMore={readMore} setReadMore={setReadMore} user={user} setDogs={setDogs} />
+      <FormSection chosenDog={chosenDogInfo} setDogs={setDogs} user={user} setUser={setUser} />
+      {tryLogin && <AdminLogin setTryLogin={setTryLogin} user={user} setUser={setUser} />}
     </div>
   );
 }

@@ -17,6 +17,7 @@
 .dogCard div {
     display: flex;
     gap: 10px;
+    /* justify-content: center; */
 } 
 
 .textDiv {
@@ -91,4 +92,8 @@
     position: absolute;
     object-fit: contain;
     transform: rotate(-20deg)
+}
+
+.dogCard.reservedForUser {
+    border: 2px solid #720d0d;
 }
